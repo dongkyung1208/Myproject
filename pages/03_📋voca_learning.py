@@ -2,7 +2,7 @@ import streamlit as st
 import random
 import pandas as pd
 
-st.set_page_config(page_title="Lesson3의 Grammar Point 과거분사 마스터", layout="centered")
+st.set_page_config(page_title="불규칙 과거분사 마스터", layout="centered")
 
 # ---------------------------
 # 1. 단어 데이터 (제공된 PDF 기반)
@@ -98,8 +98,8 @@ def get_hint(word):
 # ---------------------------
 # 화면 타이틀
 # ---------------------------
-st.title("🏆 과거분사 마스터가 되는 그날까지!")
-st.caption("🔥Step 1부터 차근차근 풀면서 과거분사를 외워봅시다🔥")
+st.title("🏆 불규칙 과거분사 마스터하기!")
+st.caption("Step 1부터 차근차근 풀면서 과거분사를 정복해 봅시다.")
 
 # 다시 시작 버튼
 if st.button("🔄 처음부터 다시 시작"):
@@ -164,7 +164,7 @@ elif st.session_state.stage == 2.5:
     
     if len(st.session_state.wrong_words) == 0:
         st.balloons()
-        st.success("Perfect! Step 1, 2에서 틀린 문제가 하나도 없습니다! 바로 전체 복습으로 넘어갑니다💯")
+        st.success("대단해요! Step 1, 2에서 틀린 문제가 하나도 없습니다! 바로 전체 복습으로 넘어갑니다.")
         if st.button("전체 단어 리스트 보기"):
             st.session_state.stage = 4
             st.rerun()
@@ -197,21 +197,35 @@ elif st.session_state.stage == 3:
             if ans != q["pp"]:
                 final_wrong += 1
                 
-        if final_wrong > 0:
-            st.error(f"아직 {final_wrong}개를 틀렸네요! 😭 결과를 확인하고 전체 리스트에서 다시 복습하세요.")
-        else:
-            st.balloons()
-            st.success("Perfect! 틀린 단어를 모두 맞췄어요! 🎉")
-            
-        if st.button("마지막 전체 Review로 넘어가기"):
-            st.session_state.stage = 4
-            st.rerun()
+        # 3.5 단계로 넘어가서 결과를 확인하도록 상태 변경
+        st.session_state.final_wrong = final_wrong
+        st.session_state.stage = 3.5
+        st.rerun()
+
+# ---------------------------
+# Step 3.5: 재시험 결과 및 Review 넘어가기
+# ---------------------------
+elif st.session_state.stage == 3.5:
+    st.subheader("📌 Step 3 결과")
+    
+    final_wrong = st.session_state.get("final_wrong", 0)
+    
+    if final_wrong > 0:
+        st.error(f"아쉽게도 아직 {final_wrong}개를 틀렸네요! 😭 그래도 끝까지 도전한 점이 훌륭합니다. 마지막 리뷰 창에서 정답을 다시 한번 확인해 보세요.")
+    else:
+        st.balloons()
+        st.success("완벽합니다! 틀린 단어를 모두 맞췄어요! 🎉")
+        
+    # 다 맞추지 않았더라도 항상 나타나는 '마지막 전체 Review로 넘어가기' 버튼
+    if st.button("마지막 전체 Review로 넘어가기"):
+        st.session_state.stage = 4
+        st.rerun()
 
 # ---------------------------
 # Review: 전체 리스트 보기
 # ---------------------------
 elif st.session_state.stage == 4:
-    st.subheader("📚 Review: 과거분사 전체 리스트")
+    st.subheader("📚 Review: 불규칙 동사 전체 리스트")
     st.caption("제시되었던 동사들의 3단 변화와 뜻을 전체적으로 확인해 보세요.")
     
     # 데이터를 표 형식(DataFrame)으로 예쁘게 보여줌
@@ -221,4 +235,4 @@ elif st.session_state.stage == 4:
     # 인덱스 숨기고 테이블 출력
     st.dataframe(df, use_container_width=True, hide_index=True)
     
-    st.success("수고하셨습니다! 과거분사 학습을 모두 마쳤습니다.")
+    st.success("수고하셨습니다! 불규칙 과거분사 학습을 모두 마쳤습니다.")
