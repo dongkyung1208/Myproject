@@ -4,11 +4,16 @@
 
 ## 🏫 **Teaching Context**
 * **Who are your learners?**
-  * *예: *
+  * *Korean high school 1st grade students studying English as a foreign language *
 * **What is your classroom environment?**
-  * *예: *
+  * *50-minute lesson
+  *  *
 * **What challenges do learners have?**
-  * *예: *
+  * *Extreme Proficiency Gap:
+  * There is a severe disparity in skill levels among the students. Advanced learners can independently compose complete sentences without any grammatical errors. In stark contrast, the lowest-level learners struggle with critical foundational deficits—ranging from an inability to read basic, short English words to a complete lack of understanding regarding fundamental sentence structure.
+  * 
+  * Disengagement during Grammar Lesson:
+  * During grammar lessons, students are expected to complete writing exercises immediately following the instructional explanation. However, low-level learners frequently disengage completely during this phase, making no attempt to participate or produce any written work.*
 
 ---
 
@@ -30,25 +35,25 @@
 
 ## 🎨 **App Design**
 * **How does it work?**
-  * *예: *
+  * * *
 * **What data or content does it use?**
-  * *예: *
+  * * *
 * **How do learners interact with it?**
-  * *예: *
+  * * *
 
 ---
 
 ## 👩‍🏫 **Classroom Use**
 * **How is the app used in the lesson?**
-  * *예: *
+  * * *
 * **What does it improve?**
-  * *예: *
+  * * *
 
 ---
 
 ## ⚠️ **Limitations**
 * **What are current limitations?**
-  * *예: *
+  * * *
 
 ---
 
