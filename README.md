@@ -1,4 +1,4 @@
-# 🚀 Project Description: [Designing Adaptive English Lessons with Customized Apps]
+# 🚀 Project Description
 
 ---
 
@@ -59,4 +59,4 @@
 
 ## 🚀 **Future Development**
 * **What could be improved?**
-  * *예: .*
+  * *
