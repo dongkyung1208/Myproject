@@ -4,12 +4,12 @@
 
 ## 🏫 **Teaching Context**
 * **Who are your learners?**
-  * *Korean high school 1st grade students studying English as a foreign language *
+  * Korean high school 1st grade students studying English as a foreign language *
 * **What is your classroom environment?**
-  * *50-minute lesson
+  * 50-minute lesson
   *  *
 * **What challenges do learners have?**
-  * *Extreme Proficiency Gap:
+  * Extreme Proficiency Gap:
   * There is a severe disparity in skill levels among the students. Advanced learners can independently compose complete sentences without any grammatical errors. In stark contrast, the lowest-level learners struggle with critical foundational deficits—ranging from an inability to read basic, short English words to a complete lack of understanding regarding fundamental sentence structure.
   * 
   * Disengagement during Grammar Lesson:
@@ -19,9 +19,9 @@
 
 ## 🎯 **Lesson Purpose**
 * **What does this lesson teach?**
-  * *예: *
+  *  *
 * **Why is this lesson meaningful?**
-  * *예: *
+  *  *
 
 ---
 
