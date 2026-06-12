@@ -3,14 +3,14 @@ import streamlit as st
 st.set_page_config(page_title="Writing Practice", layout="centered")
 
 # ---------------------------
-# 세션 상태 초기화 (페이지 간 충돌 방지를 위해 변수명에 _mid 추가)
+# 세션 상태 초기화 (변수명에 _mid 추가하여 Low 단계와 분리)
 # ---------------------------
 if "wp_mid_stage" not in st.session_state:
     st.session_state.wp_mid_stage = 1
     st.session_state.wp_mid_wrongs = []
 
 # ---------------------------
-# 문제 데이터 세팅 (중 수준: 단어별 세부 한글 뜻 제거, 오디오 기능 제거)
+# 문제 데이터 세팅
 # ---------------------------
 step1_data = [
     {"q": "1. This shop mainly sells items (made / making) in Japan.", "trans": "이 가게는 주로 일본에서 만들어진 제품을 판매한다.", "options": ["made", "making"], "ans": "made"},
@@ -34,11 +34,11 @@ step3_data = [
 ]
 
 step4_data = [
-    {"q": "1. The play writing by the French writer is very popular.", "ans": "written"},
-    {"q": "2. The boy runs around the playground is my nephew.", "ans": "running"},
-    {"q": "3. We found the Easter egg hiding beneath the grass.", "ans": "hidden"},
-    {"q": "4. He brought a basket filling with cookies.", "ans": "filled"},
-    {"q": "5. The cat found a mouse catching in a trap.", "ans": "caught"}
+    {"q": "The play writing by the French writer is very popular.", "prefix": "The play ", "suffix": " by the French writer is very popular.", "ans": "written"},
+    {"q": "The boy runs around the playground is my nephew.", "prefix": "The boy ", "suffix": " around the playground is my nephew.", "ans": "running"},
+    {"q": "We found the Easter egg hiding beneath the grass.", "prefix": "We found the Easter egg ", "suffix": " beneath the grass.", "ans": "hidden"},
+    {"q": "He brought a basket filling with cookies.", "prefix": "He brought a basket ", "suffix": " with cookies.", "ans": "filled"},
+    {"q": "The cat found a mouse catching in a trap.", "prefix": "The cat found a mouse ", "suffix": " in a trap.", "ans": "caught"}
 ]
 
 # 다시 시작 버튼
@@ -53,17 +53,15 @@ st.progress(st.session_state.wp_mid_stage / 4.5)
 st.markdown("---")
 
 # ==========================================
-# STEP 1: 객관식
+# STEP 1
 # ==========================================
 if st.session_state.wp_mid_stage == 1:
     st.subheader("📌 STEP 1. 괄호 안에서 알맞은 말을 골라 봅시다.")
-    
     for i, item in enumerate(step1_data):
         st.markdown(f"**{item['q']}**")
         st.caption(f"🇰🇷 해석: {item['trans']}")
         st.radio("정답:", item['options'], key=f"s1_m{i}", index=None, horizontal=True)
         st.markdown("---")
-        
     if st.button("Step 1 채점하기"):
         for i, item in enumerate(step1_data):
             if st.session_state.get(f"s1_m{i}") != item['ans']:
@@ -74,169 +72,100 @@ if st.session_state.wp_mid_stage == 1:
 elif st.session_state.wp_mid_stage == 1.5:
     st.subheader("🚨 Step 1 오답 확인")
     wrongs = [w for w in st.session_state.wp_mid_wrongs if w['step'] == 1]
-    if not wrongs:
-        st.success("대단해요! Step 1을 모두 맞췄습니다. 🎉")
+    if not wrongs: st.success("대단해요! 모두 맞췄습니다. 🎉")
     else:
-        st.warning(f"{len(wrongs)}문제를 틀렸습니다. 정답을 확인해보세요.")
         for w in wrongs:
-            st.write(f"❌ {w['q']}")
-            st.success(f"⭕ 정답: **{w['ans']}**")
-            st.markdown("---")
-            
-    if st.button("Step 2로 넘어가기"):
-        st.session_state.wp_mid_stage = 2
-        st.rerun()
+            st.write(f"❌ {w['q']}"); st.success(f"⭕ 정답: **{w['ans']}**"); st.markdown("---")
+    if st.button("Step 2로 넘어가기"): st.session_state.wp_mid_stage = 2; st.rerun()
 
 # ==========================================
-# STEP 2: 버튼식 배열 (영어만 표시)
+# STEP 2
 # ==========================================
 elif st.session_state.wp_mid_stage == 2:
     st.subheader("📌 STEP 2. 괄호 안의 단어를 올바르게 배열해봅시다.")
-    
     for i, item in enumerate(step2_data):
-        st.write(f"**{item['q']}**")
-        st.write(item['base'])
-        
-        if f"s2_m_selected_{i}" not in st.session_state:
-            st.session_state[f"s2_m_selected_{i}"] = []
-            
+        st.write(f"**{item['q']}**"); st.write(item['base'])
+        if f"s2_m_selected_{i}" not in st.session_state: st.session_state[f"s2_m_selected_{i}"] = []
         selected_words = st.session_state[f"s2_m_selected_{i}"]
         st.code(" ".join(selected_words) if selected_words else "(버튼을 눌러 단어를 채우세요)")
-        
         cols = st.columns(len(item['words']))
         for j, word in enumerate(item['words']):
             with cols[j]:
                 if st.button(word, key=f"btn_m_{i}_{j}", disabled=(word in selected_words)):
-                    st.session_state[f"s2_m_selected_{i}"].append(word)
-                    st.rerun()
-                    
-        if st.button("초기화", key=f"reset_m_{i}"):
-            st.session_state[f"s2_m_selected_{i}"] = []
-            st.rerun()
-            
+                    st.session_state[f"s2_m_selected_{i}"].append(word); st.rerun()
+        if st.button("초기화", key=f"reset_m_{i}"): st.session_state[f"s2_m_selected_{i}"] = []; st.rerun()
         st.markdown("---")
-        
     if st.button("Step 2 채점하기"):
         for i, item in enumerate(step2_data):
-            user_ans = st.session_state.get(f"s2_m_selected_{i}", [])
-            if user_ans != item['ans']:
+            if st.session_state.get(f"s2_m_selected_{i}", []) != item['ans']:
                 st.session_state.wp_mid_wrongs.append({"step": 2, "q": item['q'], "ans": " ".join(item['ans'])})
-        st.session_state.wp_mid_stage = 2.5
-        st.rerun()
+        st.session_state.wp_mid_stage = 2.5; st.rerun()
 
 elif st.session_state.wp_mid_stage == 2.5:
     st.subheader("🚨 Step 2 오답 확인")
     wrongs = [w for w in st.session_state.wp_mid_wrongs if w['step'] == 2]
-    if not wrongs:
-        st.success("완벽합니다! Step 2를 모두 맞췄습니다. 🎉")
+    if not wrongs: st.success("완벽합니다! 모두 맞췄습니다. 🎉")
     else:
-        st.warning(f"{len(wrongs)}문제를 틀렸습니다. 정답을 확인해보세요.")
         for w in wrongs:
-            st.write(f"❌ {w['q']}")
-            st.success(f"⭕ 올바른 배열: **{w['ans']}**")
-            st.markdown("---")
-            
-    if st.button("Step 3로 넘어가기"):
-        st.session_state.wp_mid_stage = 3
-        st.rerun()
+            st.write(f"❌ {w['q']}"); st.success(f"⭕ 정답: **{w['ans']}**"); st.markdown("---")
+    if st.button("Step 3로 넘어가기"): st.session_state.wp_mid_stage = 3; st.rerun()
 
 # ==========================================
-# STEP 3: 빈칸 채우기 (동사 원형 힌트)
+# STEP 3
 # ==========================================
 elif st.session_state.wp_mid_stage == 3:
     st.subheader("📌 STEP 3. 빈칸에 알맞은 말을 써봅시다.")
-    
     for i, item in enumerate(step3_data):
-        st.markdown(f"**{item['q']}**")
-        st.caption(item['trans'])
-        
-        with st.expander("💡 동사 원형 힌트 보기"):
-            st.write(f"👉 **{item['hint']}**")
-            
-        st.text_input("정답 입력:", key=f"s3_m{i}")
-        st.markdown("---")
-        
+        st.markdown(f"**{item['q']}**"); st.caption(item['trans'])
+        with st.expander("💡 동사 원형 힌트 보기"): st.write(f"👉 **{item['hint']}**")
+        st.text_input("정답 입력:", key=f"s3_m{i}"); st.markdown("---")
     if st.button("Step 3 채점하기"):
         for i, item in enumerate(step3_data):
             user_ans = st.session_state.get(f"s3_m{i}", "").strip().lower()
             is_correct = (user_ans in item['ans']) if isinstance(item['ans'], list) else (user_ans == item['ans'])
-            
             if not is_correct:
                 correct_str = " / ".join(item['ans']) if isinstance(item['ans'], list) else item['ans']
                 st.session_state.wp_mid_wrongs.append({"step": 3, "q": item['q'], "ans": correct_str})
-        st.session_state.wp_mid_stage = 3.5
-        st.rerun()
+        st.session_state.wp_mid_stage = 3.5; st.rerun()
 
 elif st.session_state.wp_mid_stage == 3.5:
     st.subheader("🚨 Step 3 오답 확인")
     wrongs = [w for w in st.session_state.wp_mid_wrongs if w['step'] == 3]
-    if not wrongs:
-        st.success("훌륭해요! Step 3를 모두 맞췄습니다. 🎉")
+    if not wrongs: st.success("훌륭해요! 모두 맞췄습니다. 🎉")
     else:
-        st.warning(f"{len(wrongs)}문제를 틀렸습니다. 정답을 확인해보세요.")
         for w in wrongs:
-            st.write(f"❌ {w['q']}")
-            st.success(f"⭕ 정답: **{w['ans']}**")
-            st.markdown("---")
-            
-    if st.button("Step 4로 넘어가기"):
-        st.session_state.wp_mid_stage = 4
-        st.rerun()
+            st.write(f"❌ {w['q']}"); st.success(f"⭕ 정답: **{w['ans']}**"); st.markdown("---")
+    if st.button("Step 4로 넘어가기"): st.session_state.wp_mid_stage = 4; st.rerun()
 
 # ==========================================
-# STEP 4: 어법 고치기 (띄어쓰기 무시 채점)
+# STEP 4 (전체 문장 볼드 피드백 적용)
 # ==========================================
 elif st.session_state.wp_mid_stage == 4:
     st.subheader("📌 STEP 4. 밑줄 친 부분을 어법상 바르게 고쳐 단어를 적어봅시다.")
-    st.info("💡 띄어쓰기를 실수해도 철자만 맞으면 정답으로 인정됩니다!")
-    
     for i, item in enumerate(step4_data):
         st.markdown(f"**{item['q']}**")
-        st.text_input("올바른 단어 입력:", key=f"s4_m{i}")
-        st.markdown("---")
-        
+        st.text_input("올바른 단어 입력:", key=f"s4_m{i}"); st.markdown("---")
     if st.button("최종 제출하기"):
         for i, item in enumerate(step4_data):
-            raw_input = st.session_state.get(f"s4_m{i}", "")
-            user_ans_no_space = raw_input.replace(" ", "").lower()
-            correct_ans_no_space = item['ans'].replace(" ", "").lower()
-            
-            if user_ans_no_space != correct_ans_no_space:
-                st.session_state.wp_mid_wrongs.append({"step": 4, "q": item['q'], "ans": item['ans']})
-        st.session_state.wp_mid_stage = 4.5
-        st.rerun()
+            if st.session_state.get(f"s4_m{i}", "").replace(" ", "").lower() != item['ans'].replace(" ", "").lower():
+                st.session_state.wp_mid_wrongs.append({
+                    "step": 4, 
+                    "full_q": item['prefix'] + "**" + item['ans'] + "**" + item['suffix'], 
+                    "ans": item['ans']
+                })
+        st.session_state.wp_mid_stage = 4.5; st.rerun()
 
-# ==========================================
-# FINAL: 전체 오답 복습 및 HWP 다운로드
-# ==========================================
 elif st.session_state.wp_mid_stage == 4.5:
-    st.subheader("🏆 최종 Review: 내가 틀린 모든 문제 복습하기")
-    
+    st.subheader("🏆 최종 Review: 오답 복습")
     if not st.session_state.wp_mid_wrongs:
-        st.balloons()
-        st.success("축하합니다! 처음부터 끝까지 한 문제도 틀리지 않았습니다! 완벽해요! 🎉")
+        st.balloons(); st.success("완벽해요! 🎉")
     else:
-        st.warning("아래의 오답 노트에서 틀렸던 문제들을 다시 한번 확인해보세요.")
         for w in st.session_state.wp_mid_wrongs:
-            st.write(f"**(Step {w['step']})** {w['q']}")
-            st.success(f"👉 정답: {w['ans']}")
+            if w['step'] == 4: st.write(f"❌ **{w['full_q']}**")
+            else: st.write(f"**(Step {w['step']})** {w['q']} / 정답: **{w['ans']}**")
             st.markdown("---")
-
-        hwp_content = "========================================\n"
-        hwp_content += "나만의 오답 노트 (Writing Practice)\n"
-        hwp_content += "========================================\n\n"
-        
+        hwp_content = "오답 노트\n"
         for w in st.session_state.wp_mid_wrongs:
-            hwp_content += f"[Step {w['step']}]\n"
-            hwp_content += f"문제: {w['q']}\n"
-            hwp_content += f"정답: {w['ans']}\n"
-            hwp_content += "----------------------------------------\n\n"
-        
-        st.info("👇 아래 버튼을 누르면 오답 노트가 한글 파일(.hwp) 형태로 바로 다운로드됩니다!")
-        
-        st.download_button(
-            label="📄 틀린 문제 정리 파일 받기 (.hwp)",
-            data=hwp_content.encode('utf-8'),
-            file_name="my_wrong_answers.hwp",
-            mime="text/plain"
-        )
+            q = w['full_q'] if w['step'] == 4 else w['q']
+            hwp_content += f"[Step {w['step']}] 문제: {q} / 정답: {w['ans']}\n"
+        st.download_button("📄 틀린 문제 정리 파일 받기 (.hwp)", hwp_content.encode('utf-8'), "my_wrong_answers.hwp", "text/plain")
