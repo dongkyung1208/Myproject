@@ -179,7 +179,7 @@ if st.button("🔄 처음부터 다시 시작", key="reset_all"):
     st.rerun()
 
 st.title("✍️ Writing Practice (Step 1~4)")
-st.progress(st.session_state.wp_stage / 9) # 진행률 바
+st.progress(st.session_state.wp_stage / 4.5) # 진행률 바
 st.markdown("---")
 
 # ==========================================
