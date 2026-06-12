@@ -51,34 +51,35 @@ step1_data = [
     }
 ]
 
+# ★ 콤마 제거된 Step 2 데이터 ★
 step2_data = [
     {
         "q": "1. 독성이 있다고 표시된 병을 만지지 마시오.",
         "base": "Don't _________________________.",
-        "words": ["touch", "the bottles,", "labeled", "poisonous"],
-        "ans": ["touch", "the bottles,", "labeled", "poisonous"],
-        "audio_txt": "Don't touch the bottles, labeled poisonous."
+        "words": ["touch", "the bottles", "labeled", "poisonous"],
+        "ans": ["touch", "the bottles", "labeled", "poisonous"],
+        "audio_txt": "Don't touch the bottles labeled poisonous."
     },
     {
         "q": "2. 사람들에게 사랑받는 그 배우는 곧 은퇴할 것이다.",
         "base": "The actor _________________________.",
-        "words": ["is retiring soon", "loved by", "the people,"],
-        "ans": ["loved by", "the people,", "is retiring soon"],
+        "words": ["is retiring soon", "loved by", "the people"],
+        "ans": ["loved by", "the people", "is retiring soon"],
         "audio_txt": "The actor loved by the people is retiring soon."
     },
     {
         "q": "3. 집에 남겨진 나의 개를 확인할 방법이 있나요?",
         "base": "Is there any way _________________________?",
-        "words": ["left at home", "my dog,", "to check on"],
-        "ans": ["to check on", "my dog,", "left at home"],
-        "audio_txt": "Is there any way to check on my dog, left at home?"
+        "words": ["left at home", "my dog", "to check on"],
+        "ans": ["to check on", "my dog", "left at home"],
+        "audio_txt": "Is there any way to check on my dog left at home?"
     },
     {
         "q": "4. 최고의 선수로 선정된 그 운동선수는 대학 장학금을 받았다.",
         "base": "The athlete _________________________ to university.",
-        "words": ["won a scholarship", "selected as", "the best player,"],
-        "ans": ["selected as", "the best player,", "won a scholarship"],
-        "audio_txt": "The athlete selected as the best player, won a scholarship to university."
+        "words": ["won a scholarship", "selected as", "the best player"],
+        "ans": ["selected as", "the best player", "won a scholarship"],
+        "audio_txt": "The athlete selected as the best player won a scholarship to university."
     }
 ]
 
@@ -298,7 +299,7 @@ elif st.session_state.wp_stage == 4.5:
             hwp_content += f"[Step {w['step']}]\n"
             hwp_content += f"문제: {w['q']}\n"
             hwp_content += f"정답: {w['ans']}\n"
-            hwp_content += "----------------------------------------\n"
+            hwp_content += "----------------------------------------\n\n"
         
         st.info("👇 아래 버튼을 누르면 오답 노트가 한글 파일(.hwp) 형태로 바로 다운로드됩니다!")
         
