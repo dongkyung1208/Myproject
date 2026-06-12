@@ -5,7 +5,7 @@ import random
 st.set_page_config(page_title="Random Grouping", layout="centered")
 
 st.title("👯‍♂️ Random Grouping (모둠 구성)")
-st.caption("명단을 바탕으로 빠르고 공정하게 랜덤 조 편성을 진행합니다.")
+st.caption("랜덤 조 편성을 진행합니다.")
 
 # ---------------------------
 # 1. 파일 구조에 맞춘 데이터 불러오기 함수
