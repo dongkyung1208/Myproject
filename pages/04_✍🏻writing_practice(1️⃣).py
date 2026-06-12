@@ -51,52 +51,125 @@ step1_data = [
     }
 ]
 
-# ★ 콤마 제거된 Step 2 데이터 ★
 step2_data = [
     {
         "q": "1. 독성이 있다고 표시된 병을 만지지 마시오.",
         "base": "Don't _________________________.",
-        "words": ["touch", "the bottles", "labeled", "poisonous"],
+        "words": [
+            {"en": "touch", "ko": "만지다"},
+            {"en": "the bottles", "ko": "그 병들을"},
+            {"en": "labeled", "ko": "표시된"},
+            {"en": "poisonous", "ko": "독성이 있는"}
+        ],
         "ans": ["touch", "the bottles", "labeled", "poisonous"],
         "audio_txt": "Don't touch the bottles labeled poisonous."
     },
     {
         "q": "2. 사람들에게 사랑받는 그 배우는 곧 은퇴할 것이다.",
         "base": "The actor _________________________.",
-        "words": ["is retiring soon", "loved by", "the people"],
+        "words": [
+            {"en": "is retiring soon", "ko": "곧 은퇴할 것이다"},
+            {"en": "loved by", "ko": "~에게 사랑받는"},
+            {"en": "the people", "ko": "사람들"}
+        ],
         "ans": ["loved by", "the people", "is retiring soon"],
         "audio_txt": "The actor loved by the people is retiring soon."
     },
     {
         "q": "3. 집에 남겨진 나의 개를 확인할 방법이 있나요?",
         "base": "Is there any way _________________________?",
-        "words": ["left at home", "my dog", "to check on"],
+        "words": [
+            {"en": "left at home", "ko": "집에 남겨진"},
+            {"en": "my dog", "ko": "나의 개를"},
+            {"en": "to check on", "ko": "확인할"}
+        ],
         "ans": ["to check on", "my dog", "left at home"],
         "audio_txt": "Is there any way to check on my dog left at home?"
     },
     {
         "q": "4. 최고의 선수로 선정된 그 운동선수는 대학 장학금을 받았다.",
         "base": "The athlete _________________________ to university.",
-        "words": ["won a scholarship", "selected as", "the best player"],
+        "words": [
+            {"en": "won a scholarship", "ko": "장학금을 받았다"},
+            {"en": "selected as", "ko": "~로 선정된"},
+            {"en": "the best player", "ko": "최고의 선수"}
+        ],
         "ans": ["selected as", "the best player", "won a scholarship"],
         "audio_txt": "The athlete selected as the best player won a scholarship to university."
     }
 ]
 
+# ★ Step 3 데이터: 영어 단어별 뜻(detail)과 전체 해석(trans) 추가 ★
 step3_data = [
-    {"q": "1. The advice ________ by my teacher was very helpful.", "trans": "(선생님께 받은 충고는 큰 도움이 되었다.)", "hint": "give (주다)", "ans": "given", "audio_txt": "The advice given by my teacher was very helpful."},
-    {"q": "2. This is the doctor ________ as the best in the country.", "trans": "(이 사람은 그 나라에서 최고라고 인정받는 의사이다.)", "hint": "recognize (인정하다) 또는 know (알다)", "ans": ["recognized", "known"], "audio_txt": "This is the doctor recognized as the best in the country."},
-    {"q": "3. Many people ________ in Ireland eat potatoes as their staple food.", "trans": "(아일랜드에 사는 많은 사람들은 주식으로 감자를 먹는다.)", "hint": "live (살다)", "ans": "living", "audio_txt": "Many people living in Ireland eat potatoes as their staple food."},
-    {"q": "4. English is a language ________ in many countries.", "trans": "(영어는 많은 나라들에서 사용되는 언어이다.)", "hint": "speak (말하다)", "ans": "spoken", "audio_txt": "English is a language spoken in many countries."},
-    {"q": "5. The man ________ beside the door is my professor.", "trans": "(문 앞에 서 계시는 분은 우리 교수님이다.)", "hint": "stand (서 있다)", "ans": "standing", "audio_txt": "The man standing beside the door is my professor."}
+    {
+        "q": "1. The advice ________ by my teacher was very helpful.",
+        "detail": "The(그) advice(충고는) ________(받은) by(~에 의해) my(나의) teacher(선생님) was(~였다) very(매우) helpful.(도움이 되는)",
+        "trans": "선생님께 받은 충고는 큰 도움이 되었다.", 
+        "hint": "give (주다)", "ans": "given", "audio_txt": "The advice given by my teacher was very helpful."
+    },
+    {
+        "q": "2. This is the doctor ________ as the best in the country.", 
+        "detail": "This(이 사람은) is(~이다) the(그) doctor(의사) ________(인정받는/알려진) as(~로서) the(그) best(최고) in(~에서) the(그) country.(나라)",
+        "trans": "이 사람은 그 나라에서 최고라고 인정받는 의사이다.", 
+        "hint": "recognize (인정하다) 또는 know (알다)", "ans": ["recognized", "known"], "audio_txt": "This is the doctor recognized as the best in the country."
+    },
+    {
+        "q": "3. Many people ________ in Ireland eat potatoes as their staple food.", 
+        "detail": "Many(많은) people(사람들은) ________(사는) in(~에) Ireland(아일랜드) eat(먹는다) potatoes(감자를) as(~로) their(그들의) staple food.(주식)",
+        "trans": "아일랜드에 사는 많은 사람들은 주식으로 감자를 먹는다.", 
+        "hint": "live (살다)", "ans": "living", "audio_txt": "Many people living in Ireland eat potatoes as their staple food."
+    },
+    {
+        "q": "4. English is a language ________ in many countries.", 
+        "detail": "English(영어는) is(~이다) a(하나의) language(언어) ________(사용되는) in(~에서) many(많은) countries.(나라들)",
+        "trans": "영어는 많은 나라들에서 사용되는 언어이다.", 
+        "hint": "speak (말하다)", "ans": "spoken", "audio_txt": "English is a language spoken in many countries."
+    },
+    {
+        "q": "5. The man ________ beside the door is my professor.", 
+        "detail": "The(그) man(남자는) ________(서 있는) beside(~옆에) the(그) door(문) is(~이다) my(나의) professor.(교수님)",
+        "trans": "문 앞에 서 계시는 분은 우리 교수님이다.", 
+        "hint": "stand (서 있다)", "ans": "standing", "audio_txt": "The man standing beside the door is my professor."
+    }
 ]
 
+# ★ Step 4 데이터: 영어 단어별 뜻(detail)과 전체 해석(trans) 추가 ★
 step4_data = [
-    {"q": "1. The play writing by the French writer is very popular.", "hint": "'writing'은 '쓰고 있는'이라는 뜻이에요. 프랑스 작가에 의해 '쓰인' 희곡이니까 과거분사가 필요해요.", "ans": "written", "audio_txt": "The play written by the French writer is very popular."},
-    {"q": "2. The boy runs around the playground is my nephew.", "hint": "'runs'는 동사예요. '뛰어노는'이라는 뜻의 현재분사로 바꿔보세요.", "ans": "running", "audio_txt": "The boy running around the playground is my nephew."},
-    {"q": "3. We found the Easter egg hiding beneath the grass.", "hint": "'hiding'은 '숨기고 있는'이에요. 잔디 밑에 '숨겨진' 달걀이니까 과거분사가 필요해요.", "ans": "hidden", "audio_txt": "We found the Easter egg hidden beneath the grass."},
-    {"q": "4. He brought a basket filling with cookies.", "hint": "'filling'은 '채우고 있는'이에요. 쿠키로 '채워진' 바구니니까 과거분사로 바꿔야 해요.", "ans": "filled", "audio_txt": "He brought a basket filled with cookies."},
-    {"q": "5. The cat found a mouse catching in a trap.", "hint": "'catching'은 '잡고 있는'이에요. 덫에 '잡힌' 쥐니까 과거분사를 사용하세요.", "ans": "caught", "audio_txt": "The cat found a mouse caught in a trap."}
+    {
+        "q": "1. The play writing by the French writer is very popular.", 
+        "detail": "The(그) play(희곡은) writing(쓰고 있는 ➡️ 쓰인) by(~에 의해) the(그) French(프랑스) writer(작가) is(~이다) very(매우) popular.(인기 있는)",
+        "trans": "그 프랑스 작가에 의해 쓰인 희곡은 매우 인기가 많다.",
+        "hint": "'writing'은 '쓰고 있는'이라는 뜻이에요. 프랑스 작가에 의해 '쓰인' 희곡이니까 과거분사가 필요해요.", 
+        "ans": "written", "audio_txt": "The play written by the French writer is very popular."
+    },
+    {
+        "q": "2. The boy runs around the playground is my nephew.", 
+        "detail": "The(그) boy(소년은) runs(달린다 ➡️ 뛰고 있는) around(~주변을) the(그) playground(운동장) is(~이다) my(나의) nephew.(조카)",
+        "trans": "놀이터에서 뛰어노는 소년은 내 조카이다.",
+        "hint": "'runs'는 동사예요. '뛰어노는'이라는 뜻의 현재분사로 바꿔보세요.", 
+        "ans": "running", "audio_txt": "The boy running around the playground is my nephew."
+    },
+    {
+        "q": "3. We found the Easter egg hiding beneath the grass.", 
+        "detail": "We(우리는) found(찾았다) the(그) Easter egg(부활절 달걀을) hiding(숨기고 있는 ➡️ 숨겨진) beneath(~밑에) the(그) grass.(잔디)",
+        "trans": "우리는 잔디 밑에 숨겨진 부활절 달걀을 찾았다.",
+        "hint": "'hiding'은 '숨기고 있는'이에요. 잔디 밑에 '숨겨진' 달걀이니까 과거분사가 필요해요.", 
+        "ans": "hidden", "audio_txt": "We found the Easter egg hidden beneath the grass."
+    },
+    {
+        "q": "4. He brought a basket filling with cookies.", 
+        "detail": "He(그는) brought(가져왔다) a(하나의) basket(바구니를) filling(채우고 있는 ➡️ 채워진) with(~로) cookies.(쿠키들)",
+        "trans": "그는 쿠키로 채워진 바구니를 가져왔다.",
+        "hint": "'filling'은 '채우고 있는'이에요. 쿠키로 '채워진' 바구니니까 과거분사로 바꿔야 해요.", 
+        "ans": "filled", "audio_txt": "He brought a basket filled with cookies."
+    },
+    {
+        "q": "5. The cat found a mouse catching in a trap.", 
+        "detail": "The(그) cat(고양이는) found(발견했다) a(한 마리의) mouse(쥐를) catching(잡고 있는 ➡️ 잡힌) in(~안에) a(하나의) trap.(덫)",
+        "trans": "그 고양이는 덫에 잡힌 쥐를 발견했다.",
+        "hint": "'catching'은 '잡고 있는'이에요. 덫에 '잡힌' 쥐니까 과거분사를 사용하세요.", 
+        "ans": "caught", "audio_txt": "The cat found a mouse caught in a trap."
+    }
 ]
 
 # 다시 시작 버튼
@@ -149,30 +222,31 @@ elif st.session_state.wp_stage == 1.5:
         st.rerun()
 
 # ==========================================
-# STEP 2: 버튼식 배열 (Low 레벨 맞춤)
+# STEP 2: 버튼식 배열 (Low 레벨 맞춤 + 한글 뜻)
 # ==========================================
 elif st.session_state.wp_stage == 2:
     st.subheader("📌 STEP 2. 괄호 안의 단어를 올바르게 배열해봅시다.")
-    st.info("💡 단어 버튼을 순서대로 눌러서 문장을 완성하세요!")
+    st.info("💡 단어 버튼(영어+한글뜻)을 순서대로 눌러서 문장을 완성하세요!")
     
     for i, item in enumerate(step2_data):
         st.write(f"**{item['q']}**")
         st.write(item['base'])
         
-        # 버튼 배열을 위한 세션 리스트 초기화
         if f"s2_selected_{i}" not in st.session_state:
             st.session_state[f"s2_selected_{i}"] = []
             
-        # 선택된 단어들 보여주기
-        selected = st.session_state[f"s2_selected_{i}"]
-        st.code(" ".join(selected) if selected else "(버튼을 눌러 단어를 채우세요)")
+        selected_en_words = st.session_state[f"s2_selected_{i}"]
+        st.code(" ".join(selected_en_words) if selected_en_words else "(버튼을 눌러 단어를 채우세요)")
         
-        # 단어 버튼들
         cols = st.columns(len(item['words']))
-        for j, word in enumerate(item['words']):
+        for j, word_info in enumerate(item['words']):
+            en_word = word_info['en']
+            ko_mean = word_info['ko']
+            btn_label = f"{en_word}\n({ko_mean})"
+            
             with cols[j]:
-                if st.button(word, key=f"btn_{i}_{j}", disabled=(word in selected)):
-                    st.session_state[f"s2_selected_{i}"].append(word)
+                if st.button(btn_label, key=f"btn_{i}_{j}", disabled=(en_word in selected_en_words)):
+                    st.session_state[f"s2_selected_{i}"].append(en_word)
                     st.rerun()
                     
         if st.button("초기화", key=f"reset_{i}"):
@@ -207,14 +281,16 @@ elif st.session_state.wp_stage == 2.5:
         st.rerun()
 
 # ==========================================
-# STEP 3: 빈칸 채우기 (단어 힌트 제공)
+# STEP 3: 빈칸 채우기 (단어별 뜻 + 단어 힌트 제공)
 # ==========================================
 elif st.session_state.wp_stage == 3:
     st.subheader("📌 STEP 3. 빈칸에 알맞은 말을 써봅시다.")
+    st.info("💡 각 단어의 의미와 전체 해석을 참고하여 빈칸을 채워보세요.")
     
     for i, item in enumerate(step3_data):
-        st.write(f"**{item['q']}**")
-        st.caption(item['trans'])
+        st.markdown(f"**{item['q']}**")
+        st.caption(f"📝 {item['detail']}")
+        st.write(f"🇰🇷 해석: {item['trans']}")
         
         with st.expander("💡 단어 힌트 보기"):
             st.write(f"👉 원형: **{item['hint']}**")
@@ -225,7 +301,6 @@ elif st.session_state.wp_stage == 3:
     if st.button("Step 3 채점하기"):
         for i, item in enumerate(step3_data):
             user_ans = st.session_state.get(f"s3_q{i}", "").strip().lower()
-            # 정답이 리스트(여러 개)인 경우와 문자열인 경우 분리
             is_correct = (user_ans in item['ans']) if isinstance(item['ans'], list) else (user_ans == item['ans'])
             
             if not is_correct:
@@ -252,13 +327,16 @@ elif st.session_state.wp_stage == 3.5:
         st.rerun()
 
 # ==========================================
-# STEP 4: 어법 고치기 (틀린 부분 힌트 제공)
+# STEP 4: 어법 고치기 (단어별 뜻 + 틀린 부분 힌트 제공)
 # ==========================================
 elif st.session_state.wp_stage == 4:
     st.subheader("📌 STEP 4. 밑줄 친 부분을 어법상 바르게 고쳐 단어를 적어봅시다.")
+    st.info("💡 각 단어의 의미와 해석을 꼼꼼히 읽으면 어디가 틀렸는지 쉽게 알 수 있어요!")
     
     for i, item in enumerate(step4_data):
-        st.write(f"**{item['q']}**")
+        st.markdown(f"**{item['q']}**")
+        st.caption(f"📝 {item['detail']}")
+        st.write(f"🇰🇷 해석: {item['trans']}")
         
         with st.expander("💡 틀린 부분 힌트"):
             st.info(item['hint'])
@@ -290,7 +368,6 @@ elif st.session_state.wp_stage == 4.5:
             play_audio(w['audio_txt'])
             st.markdown("---")
 
-        # HWP로 열기 위한 깔끔한 텍스트 데이터 생성
         hwp_content = "========================================\n"
         hwp_content += "나만의 오답 노트 (Writing Practice)\n"
         hwp_content += "========================================\n\n"
@@ -303,7 +380,6 @@ elif st.session_state.wp_stage == 4.5:
         
         st.info("👇 아래 버튼을 누르면 오답 노트가 한글 파일(.hwp) 형태로 바로 다운로드됩니다!")
         
-        # 다운로드 버튼 (확장자를 .hwp로 지정하여 제공)
         st.download_button(
             label="📄 틀린 문제 정리 파일 받기 (.hwp)",
             data=hwp_content.encode('utf-8'),
