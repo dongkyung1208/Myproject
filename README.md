@@ -9,7 +9,14 @@
 * **What is your classroom environment?**
   * 50-minute lesson
   * Full internet connectivity for all students via personal smartphones or tablets. 
-    
+### What challenges do learners have?
+
+* **Extreme Proficiency Gap:**
+  There is a severe disparity in skill levels among the students. Advanced learners can independently compose complete sentences without any grammatical errors. In contrast, the lowest-level learners struggle with critical foundational deficits—ranging from an inability to read basic, short English words to a complete lack of understanding regarding fundamental sentence structure.
+
+* **Disengagement during Grammar Lesson:**
+  During grammar lessons, students are expected to complete writing exercises immediately after the teacher's explanation. However, low-level learners frequently disengage completely during this phase, making no attempt to participate or produce any written work.
+      
 * **What challenges do learners have?**
   * Extreme Proficiency Gap:
     There is a severe disparity in skill levels among the students. Advanced learners can independently compose complete sentences without any grammatical errors. In contrast, the lowest-level learners struggle with critical foundational deficits—ranging from an inability to read basic, short English words to a complete lack of understanding regarding fundamental sentence structure.
