@@ -37,10 +37,10 @@
 ## 📱 **App Purpose**
 ### Why did you build this app?**
   * **Structuring Level-Appropriate Grammar Instruction:**
-  * Low-level learners:
-  * Complete classroom disengagement due to a lack of foundational vocabulary and basic sentence structure comprehension.
-  * High-level learners:
-  * Excessive idle time resulting from finishing tasks significantly faster than the allotted class time.
+    - **Low-level learners:**
+    Complete classroom disengagement due to a lack of foundational vocabulary and basic sentence structure comprehension.
+   - **For high-level learners:**
+    Excessive idle time resulting from finishing tasks significantly faster than the allotted class time.
     
 ### What learning need does it address?**
   * *예: *
