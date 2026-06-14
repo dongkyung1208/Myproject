@@ -2,31 +2,24 @@
 
 ---
 
-### 👤 Learner Profile
-* **Target Level:High School 1st Grade**
-* **Period:5th out of 5th**
+### 🏫 Learner Profile & Class Setting
+* **Target Level:** 1st-year high school students in a mixed-proficiency classroom (25–27 students in total).
+  * *Low-level learners (approx. 5 students):* Lack foundational knowledge of basic English vocabulary and sentence structures.
+  * *High-level learners (approx. 5 students):* Capable of completing assigned tasks independently without the teacher's assistance.
+  * *Intermediate-level learners (the remaining majority):* Possess a general understanding but frequently make minor mistakes.
+    
+* **Class Setting:** A fully connected 1:1 digital environment where all students can utilize their personal smartphones or tablets.
+  
+---
+
+### 🎯 Lesson Topic & Learning Objectives
+* Lesson Topic
+* Learning Objectives
+* Target Language
 
 ---
 
-### 🏫 Class Setting
-* **Total Duration:50 Minutes**
-* **시간:**
-* **기자재:**
-
----
-
-### 🎯 Lesson Topic
-* [과거분사의 후치수식]
-
----
-
-### 💡 Learning Objectives
-* ---
-
-### 🗣️ Target Language
-* ---
-
-### 🚶 Teaching Procedure
+### 🚶 Teaching Procedure (Students Activities & Teacher Role)
 1. **Warm-up:**
 2. **Presentation:**
 3. **Practice:**
@@ -34,12 +27,6 @@
 5. **Wrap-up:**
 
 ---
-
-### 👯‍♂️ Student Activities
-* ---
-
-### 👩‍🏫 Teacher Role
-* ---
 
 ### 📱 App Integration
 * **사용 기능:** (예: Voca Master Quiz, Timer 등)
