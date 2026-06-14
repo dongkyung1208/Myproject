@@ -41,20 +41,42 @@
     Complete classroom disengagement due to a lack of foundational vocabulary and basic sentence structure comprehension.
     - **High-level learners:**
     Excessive idle time resulting from finishing tasks significantly faster than the allotted class time.
-    
-### What learning need does it address?**
-  * *예: *
 
+### What learning need does it address?
+* **Providing Differentiated Instruction:**
+  Addressing the one-size-fits-all limitation of traditional grammar classes by offering level-appropriate tasks.
+* **Bridging the Foundational Gap:**
+  Equipping low-level learners with essential vocabulary and phonetic scaffolding so they can meaningfully participate at their own capacity.
+* **Maximizing Learner Engagement:**
+  Offering high-level learners self-directed, challenging activities that prevent boredom and fully utilize their instructional time.
+    
 ---
 
 ## 🎨 **App Design**
-### How does it work?**
-  * * *
-### What data or content does it use?**
-  * * *
-### How do learners interact with it?**
-  * * *
+### How does it work?
+* **Utilizing a Python-based Environment:**
+  Operating within an interactive space designed for seamless student access.
+* **Employing Adaptive Quiz Logic:**
+  Integrating dynamic hints and structured retry mechanisms based on learner inputs.
+* **Adjusting Scaffolding Automatically:**
+  Providing basic vocabulary support for low-level learners while requiring independent, full-sentence construction from advanced students.
+  
+### What data or content does it use?
+* **Text/Data:**
+  Structured vocabulary lists containing three-part verb conjugations (base form, past tense, past participle) to build foundational grammar knowledge.
+* **Educational Content:**
+  Grammar lesson worksheets tailored for practicing the target syntax, seamlessly integrated into the application to provide guided learning.
+* **Audio/Libraries:**
+  Code-generated listening materials utilizing Text-to-Speech (TTS) processing to provide on-demand pronunciation guides and reading support for learners.
 
+### How do learners interact with it?
+* **Inputting Text:**
+  Practicing three-part verb conjugations and independently constructing complete sentences using past participles.
+* **Playing Audio:**
+  Listening to code-generated TTS audio files to support reading comprehension and pronunciation.
+* **Triggering Interactive Scaffolding:**
+  Activating dynamic hints and engaging with adaptive retry mechanisms to learn at a personal pace.
+  
 ---
 
 ## 👩‍🏫 **Classroom Use**
@@ -66,11 +88,13 @@
 ---
 
 ## ⚠️ **Limitations**
-### What are current limitations?**
-  * * *
-
+### What are current limitations?
+* **Relying on Predefined Content:**
+  Focusing only on a specific grammar point and predefined vocabulary lists, requiring manual updates to cover other lessons or curriculums.
+  
 ---
 
 ## 🚀 **Future Development**
-### What could be improved?**
-  * *
+### What could be improved?
+* **Implementing a Dynamic Content Upload System:**
+  Allowing teachers to seamlessly upload raw text or CSV files, which the app then automatically converts into interactive lesson formats without requiring code-level modifications.
