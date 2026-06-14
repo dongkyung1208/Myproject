@@ -29,9 +29,9 @@
 ### Why is this lesson meaningful?
   * **Enabling Self-Paced, Personalized Learning:**
   * For low-level learners:
-  * Allowing progression at their own achievable level by focusing on basic vocabulary meanings and pronunciations, regardless of reaching the target grammar goal.
+    Allowing progression at their own achievable level by focusing on basic vocabulary meanings and pronunciations, regardless of reaching the target grammar goal.
   * For high-level learners:
-  * Facilitating independent review of confusing past participles and the successful construction of full sentences without external scaffolding.
+    Facilitating independent review of confusing past participles and the successful construction of full sentences without external scaffolding.
 
 ---
 
